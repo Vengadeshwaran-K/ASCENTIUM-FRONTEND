@@ -8,6 +8,10 @@ export function getComplianceKyc(id) {
   return apiClient.get(`/api/compliance/${id}`).then((response) => response.data)
 }
 
+export function getComplianceDashboard() {
+  return apiClient.get('/api/compliance/dashboard').then((response) => response.data)
+}
+
 export function acceptByCompliance(id, comment) {
   const payload = comment?.trim() ? { comment: comment.trim() } : {}
   return apiClient

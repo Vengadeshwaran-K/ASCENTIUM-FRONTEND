@@ -59,7 +59,10 @@ function KycFormPage({ mode }) {
     setSaving(true)
     setError('')
     try {
-      const created = await createKycDraft({ type: values.type || KYC_TYPES.INDIVIDUAL })
+      const created = await createKycDraft({
+        ...toApiPayload(values),
+        type: values.type || KYC_TYPES.INDIVIDUAL,
+      })
       navigate(`/client/kyc/${created.id}/edit`, { replace: true })
     } catch (err) {
       setError(getApiErrorDetails(err).message)

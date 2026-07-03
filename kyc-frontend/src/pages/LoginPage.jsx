@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { login } from '../api/authApi.js'
 import { useAuth } from '../contexts/AuthContext.jsx'
 import { getApiErrorDetails } from '../utils/apiError.js'
@@ -16,9 +16,11 @@ function routeByRole(role) {
 function LoginPage() {
   const { login: saveAuth } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
   const [values, setValues] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const infoMessage = location.state?.message ?? ''
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -51,6 +53,8 @@ function LoginPage() {
             <h1>Welcome back</h1>
             <p className="subtle">Sign in to continue to your role dashboard.</p>
           </div>
+
+          {infoMessage ? <div className="banner banner--warn">{infoMessage}</div> : null}
 
           <label className="field">
             <span>Email</span>

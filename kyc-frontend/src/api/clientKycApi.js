@@ -19,3 +19,7 @@ export function getMyKycRequests() {
 export function getKycById(id) {
   return apiClient.get(`/api/kyc/${id}`).then((response) => response.data)
 }
+
+export function getClientDashboard() {
+  return apiClient.get('/api/kyc/dashboard').then((response) => response.data)
+}

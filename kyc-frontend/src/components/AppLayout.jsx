@@ -5,16 +5,26 @@ import { ROLES } from '../constants/roles.js'
 
 function roleLinks(role) {
   if (role === ROLES.CLIENT) {
-    return [{ to: '/client/requests', label: 'My Requests' }]
+    return [
+      { to: '/client/dashboard', label: 'Dashboard' },
+      { to: '/client/requests', label: 'My Requests' },
+    ]
   }
   if (role === ROLES.REVIEWER) {
-    return [{ to: '/reviewer/queue', label: 'Review Queue' }]
+    return [
+      { to: '/reviewer/dashboard', label: 'Dashboard' },
+      { to: '/reviewer/queue', label: 'Review Queue' },
+    ]
   }
   if (role === ROLES.COMPLIANCE_OFFICER) {
-    return [{ to: '/compliance/queue', label: 'Compliance Queue' }]
+    return [
+      { to: '/compliance/dashboard', label: 'Dashboard' },
+      { to: '/compliance/queue', label: 'Compliance Queue' },
+    ]
   }
   if (role === ROLES.ADMIN) {
     return [
+      { to: '/admin/dashboard', label: 'Dashboard' },
       { to: '/admin/users', label: 'Users' },
       { to: '/admin/mappings', label: 'Mappings' },
       { to: '/admin/kyc', label: 'All KYC' },

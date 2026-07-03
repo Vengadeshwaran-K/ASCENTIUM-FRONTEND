@@ -21,6 +21,10 @@ export function getAllKycForAdmin() {
   return apiClient.get('/api/admin/kyc').then((response) => response.data)
 }
 
+export function getAdminDashboard() {
+  return apiClient.get('/api/admin/dashboard').then((response) => response.data)
+}
+
 export function createMapping(payload) {
   return apiClient.post('/api/admin/mappings', payload).then((response) => response.data)
 }

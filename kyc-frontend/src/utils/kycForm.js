@@ -23,15 +23,25 @@ export const EMPTY_KYC_FORM = {
   beneficialOwners: [],
 }
 
+function nullsToEmptyStrings(values) {
+  const result = { ...values }
+  for (const key of Object.keys(result)) {
+    if (result[key] === null) {
+      result[key] = ''
+    }
+  }
+  return result
+}
+
 export function toFormValues(kyc) {
   if (!kyc) return EMPTY_KYC_FORM
   return {
     ...EMPTY_KYC_FORM,
-    ...kyc,
+    ...nullsToEmptyStrings(kyc),
     beneficialOwners: Array.isArray(kyc.beneficialOwners)
       ? kyc.beneficialOwners.map((owner) => ({
           ...emptyOwner,
-          ...owner,
+          ...nullsToEmptyStrings(owner ?? {}),
           ownershipPercentage:
             owner?.ownershipPercentage === null || owner?.ownershipPercentage === undefined
               ? ''

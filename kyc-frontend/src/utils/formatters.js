@@ -11,3 +11,7 @@ export function formatDate(value) {
   if (Number.isNaN(date.getTime())) return ''
   return date.toISOString().slice(0, 10)
 }
+
+export function itemName(item) {
+  return item.fullLegalName ?? item.legalEntityName ?? `KYC #${item.id}`
+}

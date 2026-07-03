@@ -432,6 +432,12 @@ td {
   white-space: nowrap;
 }
 
+td.wrap-cell {
+  white-space: normal;
+  min-width: 220px;
+  max-width: 360px;
+}
+
 th {
   background: #f4f7ff;
   color: #36426f;
@@ -470,6 +476,30 @@ th {
 .badge--danger {
   background: #fdecec;
   color: #8b2c2c;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.stat-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-tile-label {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.stat-tile-value {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #202b57;
 }
 
 .timeline {
@@ -550,7 +580,8 @@ th {
 
   .grid,
   .timeline,
-  .detail-row {
+  .detail-row,
+  .stat-grid {
     grid-template-columns: 1fr;
   }
 

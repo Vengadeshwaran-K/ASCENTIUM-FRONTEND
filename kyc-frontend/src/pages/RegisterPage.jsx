@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { registerClient } from '../api/authApi.js'
-import { useAuth } from '../contexts/AuthContext.jsx'
 import { getApiErrorDetails } from '../utils/apiError.js'
 
 function RegisterPage() {
@@ -13,7 +12,6 @@ function RegisterPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const { login } = useAuth()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -21,9 +19,11 @@ function RegisterPage() {
     setLoading(true)
 
     try {
-      const data = await registerClient(values)
-      login(data)
-      navigate('/client/requests', { replace: true })
+      await registerClient(values)
+      navigate('/login', {
+        replace: true,
+        state: { message: 'Account created. Please log in.' },
+      })
     } catch (err) {
       setError(getApiErrorDetails(err).message)
     } finally {
