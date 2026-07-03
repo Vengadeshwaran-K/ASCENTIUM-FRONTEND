@@ -2,6 +2,7 @@ import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext.jsx'
 import { ROLES } from '../constants/roles.js'
+import NotificationBell from './NotificationBell.jsx'
 
 function roleLinks(role) {
   if (role === ROLES.CLIENT) {
@@ -60,6 +61,7 @@ function AppLayout() {
           <div className="subtle">{auth.fullName || auth.email}</div>
         </div>
         <div className="topbar-actions">
+          <NotificationBell />
           <span className="role-pill">{auth.role}</span>
           <button
             type="button"

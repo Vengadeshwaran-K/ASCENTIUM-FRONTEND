@@ -6,10 +6,10 @@ import { getApiErrorDetails } from '../utils/apiError.js'
 import { ROLES } from '../constants/roles.js'
 
 function routeByRole(role) {
-  if (role === ROLES.CLIENT) return '/client/requests'
-  if (role === ROLES.REVIEWER) return '/reviewer/queue'
-  if (role === ROLES.COMPLIANCE_OFFICER) return '/compliance/queue'
-  if (role === ROLES.ADMIN) return '/admin/users'
+  if (role === ROLES.CLIENT) return '/client/dashboard'
+  if (role === ROLES.REVIEWER) return '/reviewer/dashboard'
+  if (role === ROLES.COMPLIANCE_OFFICER) return '/compliance/dashboard'
+  if (role === ROLES.ADMIN) return '/admin/dashboard'
   return '/unauthorized'
 }
 
