@@ -11,7 +11,7 @@ function DashboardSections({ sections }) {
     <div className="stack">
       <div className="stat-grid">
         {sections.map((section) => (
-          <div className="card stat-tile" key={section.key}>
+          <div className={`card stat-tile stat-tile--${section.key}`} key={section.key}>
             <div className="stat-tile-label">{section.title}</div>
             <div className="stat-tile-value">{section.data?.count ?? 0}</div>
           </div>
