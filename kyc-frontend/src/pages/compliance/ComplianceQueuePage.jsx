@@ -40,36 +40,38 @@ function ComplianceQueuePage() {
       ) : null}
 
       {items.length ? (
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Client ID</th>
-              <th>Type</th>
-              <th>Status</th>
-              <th>Submitted</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.clientId}</td>
-                <td>{item.type}</td>
-                <td>
-                  <StatusBadge status={item.status} />
-                </td>
-                <td>{formatDateTime(item.submittedAt)}</td>
-                <td>
-                  <button type="button" onClick={() => navigate(`/compliance/queue/${item.id}`)}>
-                    Open
-                  </button>
-                </td>
+        <div className="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Client ID</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Submitted</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {items.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.clientId}</td>
+                  <td>{item.type}</td>
+                  <td>
+                    <StatusBadge status={item.status} />
+                  </td>
+                  <td>{formatDateTime(item.submittedAt)}</td>
+                  <td>
+                    <button type="button" onClick={() => navigate(`/compliance/queue/${item.id}`)}>
+                      Open
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       ) : null}
     </div>
   )

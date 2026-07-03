@@ -57,34 +57,36 @@ function AllKycPage() {
       {error ? <p className="error-text">{error}</p> : null}
 
       {filtered.length ? (
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Client ID</th>
-              <th>Type</th>
-              <th>Status</th>
-              <th>Version</th>
-              <th>Submitted</th>
-              <th>Created</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filtered.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.clientId}</td>
-                <td>{item.type}</td>
-                <td>
-                  <StatusBadge status={item.status} />
-                </td>
-                <td>{item.formVersion ?? '-'}</td>
-                <td>{formatDateTime(item.submittedAt)}</td>
-                <td>{formatDateTime(item.createdAt)}</td>
+        <div className="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Client ID</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Version</th>
+                <th>Submitted</th>
+                <th>Created</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filtered.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.clientId}</td>
+                  <td>{item.type}</td>
+                  <td>
+                    <StatusBadge status={item.status} />
+                  </td>
+                  <td>{item.formVersion ?? '-'}</td>
+                  <td>{formatDateTime(item.submittedAt)}</td>
+                  <td>{formatDateTime(item.createdAt)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       ) : !loading ? (
         <div className="card">
           <p>No records found.</p>

@@ -123,34 +123,36 @@ function UsersPage() {
       {error ? <p className="error-text">{error}</p> : null}
 
       {users.length ? (
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.fullName}</td>
-                <td>{user.email}</td>
-                <td>{user.role}</td>
-                <td>{user.active ? 'Active' : 'Inactive'}</td>
-                <td>
-                  <button type="button" onClick={() => toggleActive(user)}>
-                    {user.active ? 'Deactivate' : 'Activate'}
-                  </button>
-                </td>
+        <div className="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user.id}>
+                  <td>{user.id}</td>
+                  <td>{user.fullName}</td>
+                  <td>{user.email}</td>
+                  <td>{user.role}</td>
+                  <td>{user.active ? 'Active' : 'Inactive'}</td>
+                  <td>
+                    <button type="button" onClick={() => toggleActive(user)}>
+                      {user.active ? 'Deactivate' : 'Activate'}
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       ) : !loading ? (
         <div className="card">
           <p>No users found.</p>

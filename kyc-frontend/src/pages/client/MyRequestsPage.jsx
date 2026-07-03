@@ -81,39 +81,41 @@ function MyRequestsPage() {
       ) : null}
 
       {requests.length ? (
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Type</th>
-              <th>Status</th>
-              <th>Version</th>
-              <th>Created</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {requests.map((request) => {
-              const action = actionForRequest(request)
-              return (
-                <tr key={request.id}>
-                  <td>{request.id}</td>
-                  <td>{request.type}</td>
-                  <td>
-                    <StatusBadge status={request.status} />
-                  </td>
-                  <td>{request.formVersion ?? '-'}</td>
-                  <td>{formatDateTime(request.createdAt)}</td>
-                  <td>
-                    <button type="button" onClick={() => navigate(action.path)}>
-                      {action.label}
-                    </button>
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+        <div className="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Version</th>
+                <th>Created</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {requests.map((request) => {
+                const action = actionForRequest(request)
+                return (
+                  <tr key={request.id}>
+                    <td>{request.id}</td>
+                    <td>{request.type}</td>
+                    <td>
+                      <StatusBadge status={request.status} />
+                    </td>
+                    <td>{request.formVersion ?? '-'}</td>
+                    <td>{formatDateTime(request.createdAt)}</td>
+                    <td>
+                      <button type="button" onClick={() => navigate(action.path)}>
+                        {action.label}
+                      </button>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
       ) : null}
     </div>
   )

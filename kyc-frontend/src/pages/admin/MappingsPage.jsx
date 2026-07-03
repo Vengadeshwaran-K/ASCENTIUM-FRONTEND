@@ -147,41 +147,43 @@ function MappingsPage() {
       {error ? <p className="error-text">{error}</p> : null}
 
       {mappings.length ? (
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Client</th>
-              <th>Reviewer</th>
-              <th>Compliance Officer</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {mappings.map((mapping) => (
-              <tr key={mapping.id}>
-                <td>{mapping.id}</td>
-                <td>{getUserName(mapping.client)}</td>
-                <td>{getUserName(mapping.reviewer)}</td>
-                <td>{getUserName(mapping.complianceOfficer)}</td>
-                <td>
-                  <div className="button-row">
-                    <button type="button" onClick={() => openEdit(mapping)}>
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      className="btn-danger"
-                      onClick={() => remove(mapping.id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </td>
+        <div className="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Client</th>
+                <th>Reviewer</th>
+                <th>Compliance Officer</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {mappings.map((mapping) => (
+                <tr key={mapping.id}>
+                  <td>{mapping.id}</td>
+                  <td>{getUserName(mapping.client)}</td>
+                  <td>{getUserName(mapping.reviewer)}</td>
+                  <td>{getUserName(mapping.complianceOfficer)}</td>
+                  <td>
+                    <div className="button-row">
+                      <button type="button" onClick={() => openEdit(mapping)}>
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        className="btn-danger"
+                        onClick={() => remove(mapping.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       ) : !loading ? (
         <div className="card">
           <p>No mappings found.</p>
