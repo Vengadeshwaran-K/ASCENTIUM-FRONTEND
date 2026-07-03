@@ -817,6 +817,142 @@ tbody tr:hover {
   color: var(--stamp-red);
 }
 
+/* ── Audit trail: append-only story, oldest to newest ── */
+
+.audit-trail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.audit-item {
+  position: relative;
+  padding-left: 26px;
+  padding-bottom: 20px;
+}
+
+.audit-item:last-child {
+  padding-bottom: 0;
+}
+
+.audit-item::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 16px;
+  bottom: -6px;
+  width: 2px;
+  background: var(--border);
+}
+
+.audit-item:last-child::before {
+  display: none;
+}
+
+.audit-dot {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--slate);
+  box-shadow: 0 0 0 3px var(--surface);
+}
+
+.audit-dot--neutral {
+  background: var(--slate);
+}
+
+.audit-dot--approved {
+  background: var(--verdigris);
+}
+
+.audit-dot--rejected {
+  background: var(--stamp-red);
+}
+
+.audit-dot--risk {
+  background: var(--gold);
+}
+
+.audit-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.audit-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.audit-head strong {
+  color: var(--ink);
+}
+
+.audit-time {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.audit-actor {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.audit-role-badge {
+  font-size: 10px;
+}
+
+.audit-remark {
+  margin-top: 2px;
+  padding-left: 10px;
+  border-left: 2px solid var(--border);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.audit-risk-change {
+  margin-top: 2px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #91661a;
+  background: var(--gold-tint);
+  border-radius: 7px;
+  padding: 4px 9px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.audit-trigger {
+  position: relative;
+}
+
+.audit-floating-panel {
+  width: min(440px, calc(100vw - 2rem));
+  max-height: 460px;
+}
+
+.audit-panel-body {
+  padding: 14px;
+}
+
 /* ── Detail views ── */
 
 .timeline {

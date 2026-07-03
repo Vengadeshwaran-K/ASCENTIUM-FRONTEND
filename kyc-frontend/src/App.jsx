@@ -21,6 +21,7 @@ import AdminDashboardPage from './pages/admin/DashboardPage.jsx'
 import UsersPage from './pages/admin/UsersPage.jsx'
 import MappingsPage from './pages/admin/MappingsPage.jsx'
 import AllKycPage from './pages/admin/AllKycPage.jsx'
+import AdminAuditPage from './pages/admin/AuditPage.jsx'
 
 function RoleHomeRedirect() {
   const { auth } = useAuth()
@@ -97,6 +98,7 @@ function App() {
           <Route path="/admin/users" element={<UsersPage />} />
           <Route path="/admin/mappings" element={<MappingsPage />} />
           <Route path="/admin/kyc" element={<AllKycPage />} />
+          <Route path="/admin/kyc/:id/audit" element={<AdminAuditPage />} />
         </Route>
       </Route>
 

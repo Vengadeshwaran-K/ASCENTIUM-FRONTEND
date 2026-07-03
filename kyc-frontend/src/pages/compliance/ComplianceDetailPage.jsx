@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import {
   acceptByCompliance,
+  getComplianceAudit,
   getComplianceKyc,
   rejectByCompliance,
 } from '../../api/complianceApi.js'
 import { getApiErrorDetails } from '../../utils/apiError.js'
 import StatusBadge from '../../components/StatusBadge.jsx'
 import KycReadOnlyView from '../../components/KycReadOnlyView.jsx'
+import AuditTrailButton from '../../components/AuditTrailButton.jsx'
 
 function ComplianceDetailPage() {
   const { id } = useParams()
@@ -70,7 +72,10 @@ function ComplianceDetailPage() {
     <div className="stack">
       <div className="page-header-row">
         <h1>Compliance Review #{kyc.id}</h1>
-        <StatusBadge status={kyc.status} />
+        <div className="page-header-actions">
+          <StatusBadge status={kyc.status} />
+          <AuditTrailButton fetchAudit={() => getComplianceAudit(id)} />
+        </div>
       </div>
 
       {error ? <p className="error-text">{error}</p> : null}

@@ -12,6 +12,10 @@ export function getComplianceDashboard() {
   return apiClient.get('/api/compliance/dashboard').then((response) => response.data)
 }
 
+export function getComplianceAudit(id) {
+  return apiClient.get(`/api/compliance/${id}/audit`).then((response) => response.data)
+}
+
 export function acceptByCompliance(id, comment) {
   const payload = comment?.trim() ? { comment: comment.trim() } : {}
   return apiClient

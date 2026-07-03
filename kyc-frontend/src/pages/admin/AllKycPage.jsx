@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { getAllKycForAdmin } from '../../api/adminApi.js'
 import { getApiErrorDetails } from '../../utils/apiError.js'
 import StatusBadge from '../../components/StatusBadge.jsx'
@@ -9,6 +10,7 @@ function AllKycPage() {
   const [statusFilter, setStatusFilter] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const navigate = useNavigate()
 
   useEffect(() => {
     const run = async () => {
@@ -68,6 +70,7 @@ function AllKycPage() {
                 <th>Version</th>
                 <th>Submitted</th>
                 <th>Created</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -82,6 +85,11 @@ function AllKycPage() {
                   <td>{item.formVersion ?? '-'}</td>
                   <td>{formatDateTime(item.submittedAt)}</td>
                   <td>{formatDateTime(item.createdAt)}</td>
+                  <td>
+                    <button type="button" onClick={() => navigate(`/admin/kyc/${item.id}/audit`)}>
+                      Audit Trail
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

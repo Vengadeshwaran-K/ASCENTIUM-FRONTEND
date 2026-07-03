@@ -25,6 +25,10 @@ export function getAdminDashboard() {
   return apiClient.get('/api/admin/dashboard').then((response) => response.data)
 }
 
+export function getAdminAudit(id) {
+  return apiClient.get(`/api/admin/kyc/${id}/audit`).then((response) => response.data)
+}
+
 export function createMapping(payload) {
   return apiClient.post('/api/admin/mappings', payload).then((response) => response.data)
 }
