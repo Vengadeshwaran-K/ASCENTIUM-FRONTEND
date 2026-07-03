@@ -153,7 +153,7 @@ function KycFormPage({ mode }) {
         </div>
       ) : null}
 
-      <div className="card">
+      <div className="card form-panel form-panel--wide">
         <KycFormFields
           values={values}
           setValues={setValues}
@@ -161,7 +161,7 @@ function KycFormPage({ mode }) {
           lockType={mode === 'edit'}
         />
 
-        <div className="button-row">
+        <div className="button-row form-actions">
           {mode === 'create' ? (
             <button type="button" disabled={saving} onClick={createDraft}>
               {saving ? 'Creating...' : 'Create Draft'}

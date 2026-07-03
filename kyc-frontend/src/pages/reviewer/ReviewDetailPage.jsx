@@ -76,24 +76,33 @@ function ReviewDetailPage() {
       {error ? <p className="error-text">{error}</p> : null}
       <KycReadOnlyView kyc={kyc} />
 
-      <div className="card stack">
+      <div className="card stack form-panel">
         <label className="field">
           <span>Accept Comment (optional)</span>
           <textarea value={comment} onChange={(event) => setComment(event.target.value)} rows={3} />
         </label>
-        <button type="button" disabled={saving} onClick={accept}>
-          Accept
-        </button>
+        <div className="form-actions">
+          <button type="button" disabled={saving} onClick={accept}>
+            Accept
+          </button>
+        </div>
       </div>
 
-      <div className="card stack">
+      <div className="card stack form-panel">
         <label className="field">
           <span>Reject Reason (required)</span>
           <textarea value={reason} onChange={(event) => setReason(event.target.value)} rows={3} />
         </label>
-        <button type="button" disabled={saving || !reason.trim()} className="btn-danger" onClick={reject}>
-          Reject
-        </button>
+        <div className="form-actions">
+          <button
+            type="button"
+            disabled={saving || !reason.trim()}
+            className="btn-danger"
+            onClick={reject}
+          >
+            Reject
+          </button>
+        </div>
       </div>
     </div>
   )

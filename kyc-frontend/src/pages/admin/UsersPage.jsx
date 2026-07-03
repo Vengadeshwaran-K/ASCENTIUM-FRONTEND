@@ -161,7 +161,7 @@ function UsersPage() {
 
       {showModal ? (
         <div className="modal-backdrop">
-          <form className="modal" onSubmit={createUser}>
+          <form className="modal modal--form" onSubmit={createUser}>
             <h3>Create Staff/Admin User</h3>
             <label className="field">
               <span>Full Name</span>
@@ -220,7 +220,7 @@ function UsersPage() {
                 <option value={ROLES.ADMIN}>ADMIN</option>
               </select>
             </label>
-            <div className="button-row">
+            <div className="button-row form-actions">
               <button type="button" onClick={() => setShowModal(false)}>
                 Cancel
               </button>

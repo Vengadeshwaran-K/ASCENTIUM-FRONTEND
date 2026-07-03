@@ -194,9 +194,9 @@ function KycFormFields({ values, setValues, readOnly = false, lockType = false }
 
   return (
     <div className="kyc-form">
-      <h3>Step 1: KYC Type</h3>
+      <h3 className="form-section-title">Step 1: KYC Type</h3>
       <div className="radio-row">
-        <label>
+        <label className="choice-card">
           <input
             type="radio"
             name="type"
@@ -206,7 +206,7 @@ function KycFormFields({ values, setValues, readOnly = false, lockType = false }
           />
           Individual
         </label>
-        <label>
+        <label className="choice-card">
           <input
             type="radio"
             name="type"
@@ -218,7 +218,7 @@ function KycFormFields({ values, setValues, readOnly = false, lockType = false }
         </label>
       </div>
 
-      <h3>Step 2: Details</h3>
+      <h3 className="form-section-title">Step 2: Details</h3>
       {values.type === KYC_TYPES.INDIVIDUAL ? (
         <IndividualFields values={values} onChange={onChange} readOnly={readOnly} />
       ) : (

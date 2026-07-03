@@ -192,7 +192,7 @@ function MappingsPage() {
 
       {showModal ? (
         <div className="modal-backdrop">
-          <form className="modal" onSubmit={save}>
+          <form className="modal modal--form" onSubmit={save}>
             <h3>{form.id ? 'Edit Mapping' : 'Create Mapping'}</h3>
 
             <label className="field">
@@ -252,7 +252,7 @@ function MappingsPage() {
               </select>
             </label>
 
-            <div className="button-row">
+            <div className="button-row form-actions">
               <button type="button" onClick={() => setShowModal(false)}>
                 Cancel
               </button>

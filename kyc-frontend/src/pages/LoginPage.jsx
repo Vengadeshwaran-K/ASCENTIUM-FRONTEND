@@ -38,48 +38,65 @@ function LoginPage() {
 
   return (
     <div className="auth-shell">
-      <form className="card auth-card" onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <label className="field">
-          <span>Email</span>
-          <input
-            type="email"
-            required
-            value={values.email}
-            onChange={(event) =>
-              setValues((prev) => ({
-                ...prev,
-                email: event.target.value,
-              }))
-            }
-          />
-        </label>
+      <div className="auth-layout">
+        <div className="auth-side card">
+          <h2>KYC Operations Portal</h2>
+          <p className="subtle">
+            Secure onboarding for clients and streamlined decision workflows for staff.
+          </p>
+        </div>
 
-        <label className="field">
-          <span>Password</span>
-          <input
-            type="password"
-            required
-            value={values.password}
-            onChange={(event) =>
-              setValues((prev) => ({
-                ...prev,
-                password: event.target.value,
-              }))
-            }
-          />
-        </label>
+        <form className="card auth-card form-panel" onSubmit={handleSubmit}>
+          <div className="auth-head">
+            <h1>Welcome back</h1>
+            <p className="subtle">Sign in to continue to your role dashboard.</p>
+          </div>
 
-        {error ? <p className="error-text">{error}</p> : null}
+          <label className="field">
+            <span>Email</span>
+            <input
+              type="email"
+              required
+              placeholder="you@example.com"
+              value={values.email}
+              onChange={(event) =>
+                setValues((prev) => ({
+                  ...prev,
+                  email: event.target.value,
+                }))
+              }
+            />
+          </label>
 
-        <button type="submit" disabled={loading}>
-          {loading ? 'Signing in...' : 'Login'}
-        </button>
+          <label className="field">
+            <span>Password</span>
+            <input
+              type="password"
+              required
+              placeholder="Enter your password"
+              value={values.password}
+              onChange={(event) =>
+                setValues((prev) => ({
+                  ...prev,
+                  password: event.target.value,
+                }))
+              }
+            />
+          </label>
 
-        <p className="subtle">
-          Client account? <Link to="/register">Register here</Link>
-        </p>
-      </form>
+          {error ? <p className="error-text">{error}</p> : null}
+
+          <div className="form-actions">
+            <button type="submit" disabled={loading}>
+              {loading ? 'Signing in...' : 'Login'}
+            </button>
+          </div>
+
+          <p className="subtle auth-link-line">
+            Client account? <Link to="/register">Register here</Link>
+          </p>
+        </form>
+      </div>
     </div>
   )
 }
